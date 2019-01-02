@@ -1,0 +1,15 @@
+.header{
+text-align: center;
+padding: 18px;
+font-size: 3rem;
+font-weight: 100;
+color: white;
+
+&__button-minus{
+display: inline-block;
+}
+
+&__button-plus{
+display: inline-block;
+}
+}

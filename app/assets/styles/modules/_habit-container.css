@@ -1,0 +1,47 @@
+.habit-container{
+position: relative;
+
+&__element{
+
+position: relative;
+background-color: black;
+width: 60%;
+margin:0 auto ;
+text-align: center;
+height: 350px;
+margin-bottom: 18px;
+font-size: 2rem;
+list-style: none;
+
+}
+
+&__headline{
+width: 90%;
+height: 13%;
+background-color: white;
+margin:0 auto;
+margin-top: 2%;
+display: inline-block;
+
+}
+
+&__textarea {
+width: 90%;
+height: 70%;
+position: relative;
+margin-top: 2%;
+text-align: left;
+margin-bottom: 18px;
+font-size: 1.2rem;
+background-color: white;
+resize: none;
+
+}
+
+&__text{
+  padding-bottom: 5px;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+}
