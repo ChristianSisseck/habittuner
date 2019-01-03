@@ -33,14 +33,14 @@ position: relative;
 
 position: relative;
 background-color: black;
-width: 70%;
+width: 97%;
 margin: 0;
 text-align: center;
 height: 750px;
 margin-bottom: 18px;
 font-size: 2rem;
 list-style: none;
-padding: 5px 20px 50px 20px;
+padding: 5px 20px 50px 20px; 
 
 }
 .habit-container__headline{
@@ -114,3 +114,9 @@ padding: 10px;
     float: left;
     width: 66%;
   }
+.menu{
+  width: 90%;
+  height: 500px;
+  background-color: black;
+  margin: 1em;
+}
