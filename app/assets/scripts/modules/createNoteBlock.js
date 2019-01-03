@@ -1,16 +1,17 @@
 import $ from 'Jquery';
+import Common from './common'; // Filer der ikke ligger i npm modules, skal have ./ foran
+import * as JsonFiles from './jsonFiles';
 
 class CreateNoteBlock{
 
   constructor(){
-    alert("Trst");
     this.habitContainer = document.querySelector(".habit-container");
     this.headerButtonPlus = document.querySelector(".header__button-plus");
     this.headerButtonMinus = document.querySelector(".header__button-minus");
     this.clickHeaderButtonPlus = this.clickHeaderButtonPlus.bind(this);
     this.clickHeaderButtonMinus = this.clickHeaderButtonMinus.bind(this);
     this.clickHeaderButtonPlus();
-    this.clickHeaderButtonMinus();
+    //this.clickHeaderButtonMinus();
   }
 
   clickHeaderButtonPlus(){
@@ -19,22 +20,22 @@ class CreateNoteBlock{
     });
   }
 
-  buildMainElement(){
-    let divEl = document.createElement("li");
-    this.habitContainerElement = $(divEl).addClass("habit-container__element");
-    this.habitContainer.appendChild(divEl).innerHTML;
-    this.buildMainElementsAttributes(divEl);
-  }
+  async buildMainElement(){
+  let data = await JsonFiles.getJsonFile();
 
-  buildMainElementsAttributes(divEl){
-    let inputEl = document.createElement("input");
-    let textAreaEl = document.createElement("textarea");
-    $(textAreaEl).attr("placeholder", "Type a note here!");
-    $(textAreaEl).addClass("habit-container__textarea");
-    $(inputEl).addClass("habit-container__headline  habit-container__text");
-    $(inputEl).attr("placeholder", "Type headline here");
-    divEl.appendChild(inputEl).innerHTML;
-    divEl.appendChild(textAreaEl).innerHTML;
+    this.habitContainer.appendChild(
+      Common.toDom(`
+        <li class="habit-container__element">
+          <div class="habit-container__close-icon">
+              <div class="habit-container__close-icon__first_cross"> </div>
+              <div class="habit-container__close-icon__second_cross"> </div>
+           </div>
+          <input class="habit-container__headline habit-container__text " placeholder="Type a headline!">
+          <textarea placeholder="Type a note here!" class="habit-container__textarea"></textarea>
+      </li>
+
+      `)
+    )
   }
 
   clickHeaderButtonMinus(){
@@ -47,8 +48,12 @@ class CreateNoteBlock{
     });
   }
 
-}
+   }
+
+
+
 export default CreateNoteBlock;
+
 
 
 

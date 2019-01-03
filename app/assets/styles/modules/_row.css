@@ -1,0 +1,16 @@
+.row{
+
+ position: relative;
+
+
+  &__medium-4 {
+    float: left;
+    width: 33%;
+  }
+
+  &__medium-8 {
+    float: left;
+    width: 66%;
+  }
+
+}
