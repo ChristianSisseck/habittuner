@@ -1,24 +1,21 @@
-class Common{
+class Common {
 
-  static toDom(strHTML){
+  static toDom(strHTML) {
     let temp = document.createElement('template');
     temp.innerHTML = strHTML;
     return temp.content;
-    }
+  }
+
+  static fillMainElement(id, data) {
+
+    let text = document.querySelector(".habit-container__headline");
+    let headlineText = document.querySelector(".habit-container__textarea");
+
+    text.value = data.NoteText;
+    headlineText.value = data.HeadlineText;
+
+  }
+
 }
 
 export default Common;
-/*
-function toDom(strHTML) {
-  let temp = document.createElement('template');
-  temp.innerHTML = strHTML;
-  return temp.content;
-}
-let d=document
-    ,i
-    ,a=d.createElement("div")
-    ,b=d.createDocumentFragment();
-a.innerHTML=markup;
-while(i=a.firstChild)b.appendChild(i);
-return b;
-*/

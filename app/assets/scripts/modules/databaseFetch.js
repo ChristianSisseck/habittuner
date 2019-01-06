@@ -1,13 +1,31 @@
-
 class DatabaseFetch {
 
-      static getAllNotes(){
-           return fetch("/getnotes").then(result => {
-             console.log(result);
-             return result.json()
-            })
+  static getAllNotes() {
+    return fetch("/getnotes").then(result => {
+      console.log(result);
+      return result.json()
+    })
 
-          }
+  }
+
+
+  static sendTextNote(headlinetext, notetext) {
+    return fetch("/newnote", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        headlinetext,
+        notetext,
+
+      })
+    }).then(result => {
+      console.log(result);
+      return result.json()
+    })
+  }
 }
 /*
 (async _=>{

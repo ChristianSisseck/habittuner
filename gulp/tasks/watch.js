@@ -36,7 +36,8 @@ gulp.task('nodemon',function(done){
     var running = false;
     return nodemon({
       script: 'server/server.js',
-      watch: ['server/*.js']
+      watch: ['server/*.js'],
+      exec: 'node-inspector & node --inspect'
     })
     .on('start', function () {
       if (!running) {

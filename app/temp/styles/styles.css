@@ -114,9 +114,28 @@ padding: 10px;
     float: left;
     width: 66%;
   }
-.menu{
+.note-list{
   width: 90%;
-  height: 500px;
+  min-height: 500px;
   background-color: black;
   margin: 1em;
+  display: inline-block;
+
 }
+/* Why two elements margin, one of them has to be inline-block
+  https://stackoverflow.com/questions/9519841/why-does-this-css-margin-top-style-not-work*/
+.note-list__element{
+    width: 95%;
+    height: 30px;
+    background-color: white;
+    margin: 10px 0px 10px 7px;
+  }
+.note-list__element:hover{
+    background-color: #76aef7;
+    cursor:pointer;
+  }
+.note-list__element-text{
+    font-weight: 200;
+    font-size: medium;
+    padding: 2px 0px 2px 10px;
+  }

@@ -1,59 +1,76 @@
 import $ from 'Jquery';
 import Common from './common'; // Filer der ikke ligger i npm modules, skal have ./ foran
-import * as JsonFiles from './jsonFiles';
+import DatabaseFetch from './databaseFetch';
 
-class CreateNoteBlock{
 
-  constructor(){
+class CreateNoteBlock {
+
+  constructor() {
     this.habitContainer = document.querySelector(".habit-container");
     this.headerButtonPlus = document.querySelector(".header__button-plus");
     this.clickHeaderButtonPlus = this.clickHeaderButtonPlus.bind(this);
-    this.clickHeaderButtonMinus = this.clickHeaderButtonMinus.bind(this);
+    this.closeTextBox = this.closeTextBox.bind(this);
+    this.textBoxOpen = false;
+    this.buildMainElement();
     this.clickHeaderButtonPlus();
     this.closeTextBox();
-    this.buildMainElement();
+
+    this.closeIcon;
+
   }
 
-  clickHeaderButtonPlus(){
-    this.headerButtonPlus.addEventListener("click", () =>{
+  clickHeaderButtonPlus() {
+    this.headerButtonPlus.addEventListener("click", () => {
       this.buildMainElement();
     });
   }
 
- buildMainElement(){
-  this.habitContainer.appendChild(
-      Common.toDom(`
-        <li class="habit-container__element">
-          <div class="habit-container__close-icon">
-              <div class="habit-container__close-icon__first_cross"> </div>
-              <div class="habit-container__close-icon__second_cross"> </div>
-           </div>
-          <input class="habit-container__headline habit-container__text " placeholder="Type a headline!">
-          <textarea placeholder="Type a note here!" class="habit-container__textarea"></textarea>
-      </li>
+  buildMainElement() {
+    if (this.textBoxOpen == false) {
+      this.habitContainer.appendChild(
+        Common.toDom(`
+              <li class="habit-container__element">
+                <div class="habit-container__close-icon">
+                    <div class="habit-container__close-icon__first_cross"> </div>
+                    <div class="habit-container__close-icon__second_cross"> </div>
+                 </div>
+                <input class="habit-container__headline habit-container__text " placeholder="Type a headline!">
+                <textarea placeholder="Type a note here!" class="habit-container__textarea"></textarea>
+            </li>
 
-      `)
-    )
-  document.querySelector(".habit-container__close-icon");
-  this.closeTextBox();
+            `)
+      )
+    }
+    this.closeIcon = document.querySelector(".habit-container__close-icon");
+    this.closeTextBox();
+    this.textBoxOpen = true;
+
   }
 
-  closeTextBox(){
-    this.closeIcon.addEventListener("click", () =>{
-     let list = document.getElementsByTagName('ul')[0];
-     let lengthLi = document.getElementsByTagName('li').length;
-     let removeMe = document.getElementsByTagName('li')[lengthLi-1];
-     list.removeChild(removeMe);
+  closeTextBox() {
+    this.closeIcon.addEventListener("click", () => {
+      let text = document.querySelector(".habit-container__headline").value;
+      let headlineText = document.querySelector(".habit-container__textarea").value;
+      DatabaseFetch.sendTextNote(text, headlineText);
 
+
+      let list = document.getElementsByTagName('ul')[0];
+      let lengthLi = document.getElementsByTagName('li').length;
+      let removeMe = document.getElementsByTagName('li')[lengthLi - 1];
+      list.removeChild(removeMe);
+      this.textBoxOpen = false;
     });
   }
-
-   }
+}
 
 
 
 export default CreateNoteBlock;
 
+
+//document.querySelector(".habit-container__close-icon");
+
+//el.addEventListener("click", function(){
 
 
 
