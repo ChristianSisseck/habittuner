@@ -12,7 +12,7 @@ class NoteList {
     this.createClickEventOnNoteItem = this.createClickEventOnNoteItem.bind(this);
   }
 
-  async createNoteList() {
+   async createNoteList() {
 
     let data = await JsonFiles.getJsonFile();
 

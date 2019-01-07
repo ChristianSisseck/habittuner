@@ -15,7 +15,10 @@ route.get("/", (req, res) => {
   //Når du ikke gør noget så finder den index-filen,
 })
 route.post("/newnote", async (req, res) => {
+
+
   const query = await database.connection.query('INSERT INTO `NoteElement` SET ?', {
+    DateTime: new Date(),
     HeadlineText: req.body.headlinetext,
     NoteText: req.body.notetext
   });

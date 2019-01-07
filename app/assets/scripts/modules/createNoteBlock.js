@@ -1,7 +1,7 @@
 import $ from 'Jquery';
 import Common from './common'; // Filer der ikke ligger i npm modules, skal have ./ foran
 import DatabaseFetch from './databaseFetch';
-
+import Save from './save';
 
 class CreateNoteBlock {
 
@@ -47,12 +47,12 @@ class CreateNoteBlock {
 
   }
 
+
   closeTextBox() {
     this.closeIcon.addEventListener("click", () => {
-      let text = document.querySelector(".habit-container__headline").value;
-      let headlineText = document.querySelector(".habit-container__textarea").value;
-      DatabaseFetch.sendTextNote(text, headlineText);
 
+
+      Save.saveNote();
 
       let list = document.getElementsByTagName('ul')[0];
       let lengthLi = document.getElementsByTagName('li').length;

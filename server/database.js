@@ -8,10 +8,10 @@ class Database {
   async connectToDatabase() {
     // create the connection to database
     this.connection = await mysql.createConnection({
-      host: 'sql2.freemysqlhosting.net',
-      user: 'sql2272261',
-      database: 'sql2272261',
-      password: 'lA1!gB3!'
+      host: 'mysql54.unoeuro.com',
+      user: 'pistolspill_dk',
+      database: 'pistolspillet_dk_db5',
+      password: 'juk0910OfS'
     });
 
 
