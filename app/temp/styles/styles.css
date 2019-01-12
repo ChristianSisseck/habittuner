@@ -126,7 +126,7 @@ padding: 10px;
   https://stackoverflow.com/questions/9519841/why-does-this-css-margin-top-style-not-work*/
 .note-list__element{
     width: 95%;
-    height: 30px;
+    height: 50px;
     background-color: white;
     margin: 10px 0px 10px 7px;
   }
@@ -136,6 +136,6 @@ padding: 10px;
   }
 .note-list__element-text{
     font-weight: 200;
-    font-size: medium;
+    font-size: small;
     padding: 2px 0px 2px 10px;
   }

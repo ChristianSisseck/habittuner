@@ -1,32 +1,34 @@
 import Common from './common';
 import TextConverter from './textConverter';
-import * as JsonFiles from './jsonFiles';
+import DatabaseFetch from './databaseFetch';
 import CreateNoteBlock from './createNoteBlock';
 
 class NoteList {
 
   constructor() {
-    this.textConverter = new TextConverter();
     this.list = document.querySelector(".note-list");
     this.createNoteList();
     this.createClickEventOnNoteItem = this.createClickEventOnNoteItem.bind(this);
+    DatabaseFetch.deleteTextNote(1);
   }
 
-   async createNoteList() {
+  async createNoteList() {
 
-    let data = await JsonFiles.getJsonFile();
+    let data = await DatabaseFetch.getJsonFile();
 
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i <= data.length; i++) {
 
       let headlineText = data[i].HeadlineText;
+      let dateTime = data[i].DateTime;
       let noteId = data[i].Id;
-      //let date = this.textConverter.convertDateString(data[0].DateTime);
-      let headline = this.textConverter.convertHeadlineString(headlineText);
+      let date = TextConverter.convertDateString(dateTime);
+      let headline = TextConverter.convertHeadlineString(headlineText);
 
       this.list.appendChild(
         Common.toDom(`
           <div class="note-list__element note-list__element-text" id="${i}">
-          ${headline}
+            <strong>${headline.toUpperCase()}</strong>  </br>
+                    ${date}
             </div>
         `)
       )

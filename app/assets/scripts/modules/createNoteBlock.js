@@ -5,7 +5,7 @@ import Save from './save';
 
 class CreateNoteBlock {
 
-  constructor() {
+  constructor(){
     this.habitContainer = document.querySelector(".habit-container");
     this.headerButtonPlus = document.querySelector(".header__button-plus");
     this.clickHeaderButtonPlus = this.clickHeaderButtonPlus.bind(this);
@@ -14,7 +14,8 @@ class CreateNoteBlock {
     this.buildMainElement();
     this.clickHeaderButtonPlus();
     this.closeTextBox();
-
+    this.clickSaveButton = this.clickSaveButton.bind(this);
+    this.saveButton
     this.closeIcon;
 
   }
@@ -24,6 +25,7 @@ class CreateNoteBlock {
       this.buildMainElement();
     });
   }
+
 
   buildMainElement() {
     if (this.textBoxOpen == false) {
@@ -36,6 +38,8 @@ class CreateNoteBlock {
                  </div>
                 <input class="habit-container__headline habit-container__text " placeholder="Type a headline!">
                 <textarea placeholder="Type a note here!" class="habit-container__textarea"></textarea>
+                <div class="habit-container__save-button"> <button class="w3-button w3-black">Save</button>
+               </div>
             </li>
 
             `)
@@ -44,15 +48,24 @@ class CreateNoteBlock {
     this.closeIcon = document.querySelector(".habit-container__close-icon");
     this.closeTextBox();
     this.textBoxOpen = true;
+    this.saveButton = document.querySelector(".habit-container__save-button");
+    this.clickSaveButton();
 
   }
 
+  clickSaveButton(){
+    this.saveButton.addEventListener("click", ()=>{
+      Save.saveNote();
+      console.log("hello there");
+    });
+  }
 
   closeTextBox() {
     this.closeIcon.addEventListener("click", () => {
+      let text = document.querySelector(".habit-container__headline").value;
+      let headlineText = document.querySelector(".habit-container__textarea").value;
+      DatabaseFetch.sendTextNote(text, headlineText);
 
-
-      Save.saveNote();
 
       let list = document.getElementsByTagName('ul')[0];
       let lengthLi = document.getElementsByTagName('li').length;

@@ -36,6 +36,12 @@ route.get("/getnotes", async (req, res) => {
   // req.query.ost
 });
 
+route.get("/delete", async (req, res) => {
+
+   const [rows, fields] = await database.connection.execute('SELECT * FROM `NoteElement` where Id = ?', [req.query.id]);
+   res.json(rows);
+});
+
 route.get("/search", async (req, res) => {
 
   //const query =  await database.connection.query('INSERT INTO `NoteElement` SET ?', { HeadlineText: 'john', NoteText: 'johnjohn' });
