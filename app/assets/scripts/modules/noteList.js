@@ -57,16 +57,14 @@ class NoteList {
   fillNoteElement(note) {
     let headlineText = document.querySelector(".habit-container__headline");
     let text = document.querySelector(".habit-container__textarea");
-    let noteId = document.querySelector(".note-list__close-icon").id;
 
-    console.log(noteId);
-
-    let habitContainerElement = document.querySelector(".habit-container__element");
+    let habitContainer = document.querySelector(".habit-container");
 
     text.value = note.NoteText;
     headlineText.value = note.HeadlineText;
-    habitContainerElement.id = noteId;
+    habitContainer.id = note.Id;
 
+    console.log(note.Id);
 
 
     Common.changeButton("update");

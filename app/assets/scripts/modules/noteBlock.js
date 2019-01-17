@@ -68,8 +68,7 @@ class NoteBlock {
 
        console.log(noteId);
 
-
-        DatabaseFetch.updateTextNote(noteId, noteText, headlineText);
+       DatabaseFetch.updateTextNote(noteId, noteText, headlineText).then(new NoteList());
 
 
 

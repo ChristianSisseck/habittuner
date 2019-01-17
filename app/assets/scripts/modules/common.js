@@ -7,16 +7,6 @@ class Common {
     return temp.content;
   }
 
-  static fillMainElement(note) {
-
-      let headlineText = document.querySelector(".habit-container__headline");
-      let text = document.querySelector(".habit-container__textarea");
-
-      text.value = note.NoteText;
-      headlineText.value = note.HeadlineText;
-      this.changeButton("update");
-    }
-
     static changeButton(button) {
 
       let saveButton = document.querySelector(".habit-container__save-button");

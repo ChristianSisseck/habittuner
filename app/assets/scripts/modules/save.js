@@ -11,12 +11,8 @@ class Save {
 
     if (text != "" || headlineText != "") {
 
-      DatabaseFetch.sendTextNote(text, headlineText);
+      DatabaseFetch.sendTextNote(text, headlineText).then(new NoteList());
 
-      let list = document.querySelector(".note-list");
-      list.innerHTML = "";
-
-      new NoteList();
     }
   }
 
