@@ -8,7 +8,7 @@ background-color: black;
 width: 97%;
 margin: 0;
 text-align: center;
-height: 330px;
+height: 430px;
 margin-bottom: 18px;
 font-size: 2rem;
 list-style: none;
@@ -28,7 +28,7 @@ display: inline-block;
 
 &__textarea {
 width: 90%;
-height: 70%;
+height: 40%;
 position: relative;
 margin-top: 2%;
 text-align: left;
@@ -80,6 +80,7 @@ padding: 10px;
     transform-origin: 0 100%;
   }
 
-  }
+}
+
 
 }

@@ -1,6 +1,6 @@
-import CreateNoteBlock from './modules/createNoteBlock';
+import NoteBlock from './modules/noteBlock';
 import NoteList from './modules/noteList';
 import $ from "jquery";
 
-var elements = new CreateNoteBlock();
+var noteBlock = new NoteBlock();
 var notelist = new NoteList();

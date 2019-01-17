@@ -37,8 +37,8 @@ class DatabaseFetch {
     })
   }
 
-  static updateTextNote(note, noteText, headlineText) {
-    return fetch("/notes/" + note.Id, {
+  static updateTextNote(noteId,noteText,headlineText) {
+    return fetch("/notes/" + noteId, {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',

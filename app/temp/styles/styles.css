@@ -28,6 +28,7 @@ padding: 20px 20px 0px 20px;
 .habit-container{
 position: relative;
 
+
 }
 .habit-container__element{
 
@@ -36,7 +37,7 @@ background-color: black;
 width: 97%;
 margin: 0;
 text-align: center;
-height: 330px;
+height: 430px;
 margin-bottom: 18px;
 font-size: 2rem;
 list-style: none;
@@ -54,7 +55,7 @@ display: inline-block;
 }
 .habit-container__textarea {
 width: 90%;
-height: 70%;
+height: 40%;
 position: relative;
 margin-top: 2%;
 text-align: left;
@@ -79,7 +80,7 @@ padding: 10px;
   z-index: 10;
   cursor: pointer;
 
-  }
+}
 .habit-container__close-icon__first_cross{
     position: absolute;
     top: 0;

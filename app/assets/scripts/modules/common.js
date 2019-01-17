@@ -1,5 +1,4 @@
 import $ from 'Jquery';
-import CreateNoteBlock from './createNoteBlock';
 class Common {
 
   static toDom(strHTML) {
@@ -9,10 +8,6 @@ class Common {
   }
 
   static fillMainElement(note) {
-
-      const instansOfCreateNoteBlock = new CreateNoteBlock;
-      instansOfCreateNoteBlock.buildMainElement();
-      instansOfCreateNoteBlock.clickUpdateButton(note);
 
       let headlineText = document.querySelector(".habit-container__headline");
       let text = document.querySelector(".habit-container__textarea");
