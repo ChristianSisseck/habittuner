@@ -1,3 +1,5 @@
+import $ from 'Jquery';
+import CreateNoteBlock from './createNoteBlock';
 class Common {
 
   static toDom(strHTML) {
@@ -6,16 +8,36 @@ class Common {
     return temp.content;
   }
 
-  static fillMainElement(id, data) {
+  static fillMainElement(note) {
 
-    let headlineText = document.querySelector(".habit-container__headline");
-    let text  = document.querySelector(".habit-container__textarea");
+      const instansOfCreateNoteBlock = new CreateNoteBlock;
+      instansOfCreateNoteBlock.buildMainElement();
+      instansOfCreateNoteBlock.clickUpdateButton(note);
 
-    text.value = data.NoteText;
-    headlineText.value = data.HeadlineText;
+      let headlineText = document.querySelector(".habit-container__headline");
+      let text = document.querySelector(".habit-container__textarea");
+
+      text.value = note.NoteText;
+      headlineText.value = note.HeadlineText;
+      this.changeButton("update");
+    }
+
+    static changeButton(button) {
+
+      let saveButton = document.querySelector(".habit-container__save-button");
+      let updateButton = document.querySelector(".habit-container__update-button");
+
+      if (button === "update") {
+        $(saveButton).hide();
+        $(updateButton).show();
+      } else {
+        $(saveButton).show();
+        $(updateButton).hide();
+      }
+
+    }
+
 
   }
 
-}
-
-export default Common;
+  export default Common;

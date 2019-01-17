@@ -1,3 +1,4 @@
+import $ from 'Jquery';
 class TextConverter {
 
   static convertDateString(dateString) {

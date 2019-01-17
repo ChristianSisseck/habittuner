@@ -1,14 +1,17 @@
+
 class DatabaseFetch {
 
   //Get All notes from the database - READ
 
-  static async getJsonFile(){
-  let data = await DatabaseFetch.getAllNotes();
-  return data;
-}
+  static async getJsonFile() {
+    let data = await DatabaseFetch.getAllNotes();
+    return data;
+  }
 
-   static getAllNotes() {
-    return fetch("/getnotes").then(result => {
+  //Hvis ikke du definerer hvilken metode du bruger i FETCH, så er det GET.
+  //GET er standard metoden i FETCH
+  static getAllNotes() {
+    return fetch("/notes").then(result => {
       console.log(result);
       return result.json()
     });
@@ -17,7 +20,7 @@ class DatabaseFetch {
 
   //Post a new TextNote to database, CREATES a new row
   static sendTextNote(headlinetext, notetext) {
-    return fetch("/newnote", {
+    return fetch("/notes", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -34,14 +37,33 @@ class DatabaseFetch {
     })
   }
 
+  static updateTextNote(note, noteText, headlineText) {
+    return fetch("/notes/" + note.Id, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        headlinetext: headlineText,
+        notetext: noteText,
+      })
+    }).then(result => {
+      console.log(result);
+      return result.json()
+    })
+  }
+
   //Post a new UPDATE to an existing TextNote Element in the database
 
 
   //Post an id to the database, that DELETES a single TextNote Element
-  static deleteTextNote(id) {
-    return fetch("/delete?id=" + id).then(result => {
+  static deleteNote(id) {
+    return fetch("/notes/" + id, {
+      method: 'DELETE'
+    }).then(result => {
       console.log(result);
-      return result.json();
+      return result.json()
     })
   }
 
